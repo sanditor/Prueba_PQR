@@ -26,11 +26,13 @@
           }else if ($Tipo_pqr == "Queja") {
             $solucion = "En 2 días damos solución";
           }
+
           $nombre_usuario=  MysqlQuery::RequestPost('nombre_usuario');
           $email_usuario= MysqlQuery::RequestPost('email_usuario');
           $asunto_pqr= MysqlQuery::RequestPost('asunto_pqr');
           $estado_pqr= MysqlQuery::RequestPost('estado_pqr');
           $fecha_creacion_PQR=  MysqlQuery::RequestPost('fecha_creacion_PQR');
+          $fecha_limite_atencion = "";
           $descripcion_pqr=  MysqlQuery::RequestPost('descripcion_pqr');         
           $cabecera="From: SoporteSystem Colombia<sluque@qdit.co>";
           $mensaje_mail="¡Gracias por reportarnos su problema! Buscaremos una solución para su PQR lo mas pronto posible. Su ID PQR es: ".$id_pqr;
@@ -38,7 +40,7 @@
 
           
          
-          if(MysqlQuery::Guardar("ticket", "fecha_creacion_PQR, nombre_usuario, email_usuario, Tipo_pqr, asunto_pqr, descripcion_pqr, estado_pqr, serie, solucion", "'$fecha_creacion_PQR', '$nombre_usuario', '$email_usuario', '$Tipo_pqr', '$asunto_pqr', '$descripcion_pqr', '$estado_pqr', '$id_pqr', '$solucion'")){
+          if(MysqlQuery::Guardar("ticket", "fecha_creacion_PQR, fecha_limite_atencion, nombre_usuario, email_usuario, Tipo_pqr, asunto_pqr, descripcion_pqr, estado_pqr, serie, solucion", "'$fecha_creacion_PQR', '$fecha_limite_atencion', '$nombre_usuario', '$email_usuario', '$Tipo_pqr', '$asunto_pqr', '$descripcion_pqr', '$estado_pqr', '$id_pqr', '$solucion'")){
 
             /*----------  Enviar correo con los datos del PQR
             mail($email_usuario, $asunto_pqr, $descripcion_pqr, $cabecera)
@@ -60,7 +62,7 @@
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
                     <h4 class="text-center">OCURRIÓ UN ERROR</h4>
                     <p class="text-center">
-                        No hemos podido crear el ticket. Por favor intente nuevamente.
+                        No hemos podido crear el PQR. Por favor intente nuevamente.
                     </p>
                 </div>
             ';

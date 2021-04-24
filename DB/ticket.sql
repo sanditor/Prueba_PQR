@@ -56,7 +56,7 @@ INSERT INTO `cliente` (`id_cliente`, `nombre_completo`, `nombre_usuario`, `email
 CREATE TABLE IF NOT EXISTS `ticket` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `fecha_creacion_PQR` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
-  `fecha_limite_atencion` varchar(30) COLLATE utf8_spanish2_ci NOT NULL,
+  `fecha_limite_atencion` varchar(30) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `serie` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
   `nombre_usuario` varchar(20) COLLATE utf8_spanish2_ci NOT NULL,
   `email_usuario` varchar(60) COLLATE utf8_spanish2_ci NOT NULL,
@@ -67,9 +67,9 @@ CREATE TABLE IF NOT EXISTS `ticket` (
   `solucion` text COLLATE utf8_spanish2_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `serie` (`serie`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
--- Volcando datos para la tabla ticket.ticket: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla ticket.ticket: ~8 rows (aproximadamente)
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
 INSERT INTO `ticket` (`id`, `fecha_creacion_PQR`, `fecha_limite_atencion`, `serie`, `nombre_usuario`, `email_usuario`, `Tipo_pqr`, `asunto_pqr`, `estado_pqr`, `descripcion_pqr`, `solucion`) VALUES
 	(3, '24/04/2021', '27/04/2021', 'PQRN1', 'usuario', 'usuario@usuario.com', 'Peticion', 'Revisión Equipo', 'Nuevo', 'Equipo dañado', 'En tres días se da respuesta');
